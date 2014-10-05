@@ -1,0 +1,38 @@
+<ion-view title="Breweries">
+  <ion-content class="has-header">
+  
+  <div class="list card">
+    <ion-item>
+      <h3 ng-bind="item.name"></h3>
+    </ion-item>
+
+    <div ng-show="item.address1">
+      <ion-item class="item-divider">
+        <h3>Address</h3>
+      </ion-item>
+      <ion-item class="item-main">
+        <p ng-bind="item.address1"></p>
+        <p>{{item.city}}, {{item.state}}</p>
+      </ion-item>
+    </div>
+
+    <div ng-show="item.website">
+      <ion-item class="item-divider">
+        <h3>Web Site</h3>
+      </ion-item>
+      <ion-item>
+        <a ng-href="{{item.website}}">{{item.website}}</a>
+      </ion-item>
+    </div>
+
+    <div ng-show="item.descript">
+      <ion-item class="item-divider">
+        <h3>Description</h3>
+      </ion-item>
+      <ion-item class="item-body" ng-bind="item.descript"></ion-item>
+    </div>
+  </div>
+
+  </ion-content>
+</ion-view>
+

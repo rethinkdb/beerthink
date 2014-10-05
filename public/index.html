@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>BeerThink</title>
+
+    <script type="text/javascript" src="http://code.ionicframework.com/1.0.0-beta.12/js/angular/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="http://code.ionicframework.com/1.0.0-beta.12/js/ionic.bundle.min.js"></script>
+    
+    <script type="text/javascript" src="app.js"></script>
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+    <link rel="stylesheet" href="http://code.ionicframework.com/1.0.0-beta.12/css/ionic.min.css">
+    
+    <style>
+      .brewer {
+        padding-top: 10px;
+        color: #9d9d9d;
+      }
+
+      .main-list-item {
+        width: 100%;
+        height: 81px;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+      }
+
+      .tabs i.icon::before {
+        margin: 5px;
+        font-size: 24px;
+      }
+
+      .back-text {
+        padding-left: 5px;
+      }
+    </style>
+  </head>
+  <body ng-app="beerThink">
+
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button class="button-icon">
+        <span class="back-text">Back</div>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-tabs class="tabs-positive tabs-icon-top">
+      <ion-tab title="Beers" icon="ion-beer" href="#/beers">
+        <ion-nav-view name="beers"></ion-nav-view>
+      </ion-tab>
+        
+      <ion-tab title="Breweries" icon="ion-earth" href="#/breweries">
+        <ion-nav-view name="breweries"></ion-nav-view>
+      </ion-tab>
+
+      <ion-tab title="Nearby" icon="ion-location" href="#/nearby">
+        <ion-nav-view name="nearby"></ion-nav-view>
+      </ion-tab>
+    </ion-tabs>
+
+    <script type="text/ng-template" id="beers.html">
+      <ion-view title="Beers">
+        <ion-content class="has-header has-tabs">
+        
+          <ion-list>
+            <ion-item class="main-list-item"
+              collection-repeat="beer in data.items"
+              collection-item-width="'100%'"
+              collection-item-height="82"
+              href="#/beers/{{$index}}">
+              <div class="beer" ng-bind="beer.name"></div>
+              <div class="brewer">By {{beer.brewery.name}}</div>
+            </ion-item>
+          </ion-list>
+          
+          <ion-infinite-scroll on-infinite="fetchMore()" distance="25%">
+          </ion-infinite-scroll>
+
+        </ion-content>
+      </ion-view>
+    </script>
+    
+    <script type="text/ng-template" id="breweries.html">
+      <ion-view title="Breweries">
+        <ion-content class="has-header has-tabs">
+        
+          <ion-list>
+            <ion-item class="main-list-item"
+              collection-repeat="brewery in data.items"
+              collection-item-width="'100%'"
+              collection-item-height="82"
+              href="#/breweries/{{$index}}">
+              <div class="beer" ng-bind="brewery.name"></div>
+              <div class="brewer" ng-bind="brewery.address1"></div>
+            </ion-item>
+          </ion-list>
+      
+          <ion-infinite-scroll on-infinite="fetchMore()" distance="25%">
+          </ion-infinite-scroll>
+
+        </ion-content>
+      </ion-view>
+    </script>
+    
+    <script type="text/ng-template" id="nearby.html">
+      <ion-view title="Breweries">
+        <ion-content class="has-header has-tabs">
+        
+          <ion-list>
+            <ion-item class="main-list-item"
+              collection-repeat="brewery in data.items"
+              collection-item-width="'100%'"
+              collection-item-height="82"
+              href="#/nearby/{{$index}}">
+              <div class="beer" ng-bind="brewery.name"></div>
+              <div class="brewer">{{brewery.distance.toFixed(2)}} miles</div>
+            </ion-item>
+          </ion-list>
+      
+          <ion-infinite-scroll on-infinite="fetchMore()" distance="25%">
+          </ion-infinite-scroll>
+
+        </ion-content>
+      </ion-view>
+    </script>
+
+    
+  </body>
+</html>
+

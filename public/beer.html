@@ -1,0 +1,65 @@
+<ion-view title="Beers">
+  <ion-content class="has-header">
+  
+  <div class="list card">
+    <ion-item>
+      <h3 ng-bind="item.name"></h3>
+      <p ng-bind="item.brewery.name"></p>
+    </ion-item>
+
+    <div ng-show="item.cat_name">
+      <ion-item class="item-divider">
+        <h3>Category</h3>
+      </ion-item>
+      <ion-item ng-bind="item.cat_name"></ion-item>
+    </div>
+
+    <div ng-show="item.style_name">
+      <ion-item class="item-divider">
+        <h3>Style</h3>
+      </ion-item>
+      <ion-item ng-bind="item.style_name"></ion-item>
+    </div>
+
+    <div ng-show="item.descript">
+      <ion-item class="item-divider">
+        <h3>Description</h3>
+      </ion-item>
+      <ion-item class="item-body" ng-bind="item.descript"></ion-item>
+    </div>
+  </div>
+
+  <div class="list card">
+    <ion-item>
+      <h3 ng-bind="item.brewery.name"></h3>
+    </ion-item>
+
+    <div ng-show="item.brewery.address1">
+      <ion-item class="item-divider">
+        <h3>Address</h3>
+      </ion-item>
+      <ion-item class="item-main">
+        <p ng-bind="item.brewery.address1"></p>
+        <p>{{item.brewery.city}}, {{item.brewery.state}}</p>
+      </ion-item>
+    </div>
+
+    <div ng-show="item.brewery.website">
+      <ion-item class="item-divider">
+        <h3>Web Site</h3>
+      </ion-item>
+      <ion-item>
+        <a ng-href="{{item.brewery.website}}">{{item.brewery.website}}</a>
+      </ion-item>
+    </div>
+
+    <div ng-show="item.brewery.descript">
+      <ion-item class="item-divider">
+        <h3>Description</h3>
+      </ion-item>
+      <ion-item class="item-body" ng-bind="item.brewery.descript"></ion-item>
+    </div>
+  </div>
+
+  </ion-content>
+</ion-view>

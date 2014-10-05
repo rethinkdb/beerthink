@@ -1,0 +1,22 @@
+{
+  "name": "beerthink",
+  "version": "0.0.1",
+  "description": "A sample app that demonstrates paging with RethinkDB and Ionic",
+  "main": "app.js",
+  "author": "Ryan Paul",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rethinkdb/beerthink.git"
+  },
+  "dependencies": {
+    "express": "^4.9.1",
+    "q": "^1.0.1",
+    "q-io": "^1.11.5",
+    "rethinkdb": "^1.15.0-0"
+  }
+}
